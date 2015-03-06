@@ -27,9 +27,9 @@ if ($mysqli->connect_error) {
     <br>
   <div>
   	<form action="Patient.php" method="post" id="Patient">
-				<div class="ptInfo">
-          <label class="col-sm-2 control-label">Patient Information:</label>
-          <div class="col-sm-6">
+		  <div class="ptInfo">
+          <label class="col-sm-3 control-label">Patient Information:</label>
+          <div class="col-sm-3">
             <input class="form-control" id="fname" name="fname" placeholder="First name.." type="text">
             <input class="form-control" id="lname" name="lname" placeholder="Last name.." type="text">
             <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date">
@@ -46,6 +46,22 @@ if ($mysqli->connect_error) {
           </div>
         </div>
    	</form>
+	<form action="physician.php" method="post" id="Physician">
+    <div class="mdInfo">
+      <label class="col-sm-3 control-label">Physician Information:</label>
+      <div class="col-sm-3">
+        <input class="form-control" id="physician_id" name="physician_id" placeholder="ID No." type="text">
+        <input class="form-control" id="npi" name="npi" placeholder="NPI No." type="text">
+        <input class="form-control" id="license" name="license" placeholder="License No." type="number">
+        <input class="form-control" id="pt_id" name="pt_id" placeholder="Pt ID No." type="number">
+	  </div>
+	</div>
+	<div class="form-group">
+      <div class="col-sm-2 col-sm-offset-8">
+       <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </div>
+    </div>
+    </form>
    	</div>
   </body>
 </html>
