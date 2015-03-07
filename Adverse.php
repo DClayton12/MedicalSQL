@@ -5,23 +5,19 @@ $mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkz
 if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
-//  get PATIENT variables from POST request
-$dob= $_POST['dob'];
-$fname= $_POST['fname'];
-$lname= $_POST['lname'];
-$phone= $_POST['phone'];
-$house= $_POST['house'];
-$street_name= $_POST['street_name'];
-$town= $_POST['town'];
-$pcp_id= $POST['pcp_id'];
+//  get ADVERSE EFFECT variables from POST request
+$severity= $_POST['severity'];
+$description= $_POST['description'];
+$med_id= $_POST['med_id'];
+$pt_id= $_POST['pt_id'];
 
-if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($house) && !empty($street_name) && !empty($town) && !empty($pcp_id)){
+if(!empty($severity) && !empty($description) && !empty($med_id) && !empty($pt_id)){
 	//Only if user inputs all specified data. 
-	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town) VALUES (?,?,?,?,?,?,?,?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO Adverse_Effect(severity, description, med_id, pt_id) VALUES (?,?,?,?)"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("dssddssd",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town'],$_POST['pcp_id']))){
+	if(!($stmt->bind_param("ssdd",$_POST['severity'],$_POST['description'],$_POST['med_id'],$_POST['pt_id']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 			}
@@ -35,29 +31,20 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 	$redirect = "http://" . $_SERVER['HTTP_HOST'] . $path;
 	header("Location: {$redirect}/index.php");
 
-	if(empty($dob)) { // One or more inputs are empty. These may not be NULL.
-		echo 'Birthdate is a required field. ';
+	if(empty($severity)) { // One or more inputs are empty. These may not be NULL.
+		echo 'Severity is a required field. ';
 	}
-	if(empty($fname)) {
-		echo 'First name is a required field. ';
+	if(empty($description)) {
+		echo 'Description is a required field. ';
 	}
-	if(empty($lname)) {
-		echo 'Last name is a required field. ';
+	if(empty($med_id)) {
+		echo 'Medication ID is a required field. ';
 	}
-	if(empty($phone)) {
-		echo 'Phone is a required field. ';
+	if(empty($pt_id)) {
+		echo 'Patient ID# is a required field. ';
 	}
 	if(empty($house)) {
 		echo 'House number is a required field. ';
-	}
-	if(empty($street_name)) {
-		echo 'Street name is a required field. ';
-	}
-	if(empty($town)) {
-		echo 'Town is a required field. ';
-	}
-	if(empty($pcp_id)) {
-		echo 'Physician ID# is a required field. ';
 	}
 	}
 ?>

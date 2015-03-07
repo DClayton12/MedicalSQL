@@ -32,12 +32,12 @@ if ($mysqli->connect_error) {
           <div class="col-sm-3">
             <input class="form-control" id="fname" name="fname" placeholder="First name.." type="text">
             <input class="form-control" id="lname" name="lname" placeholder="Last name.." type="text">
-            <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date">
-            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="number">
-            <input class="form-control" id="house" name="house" placeholder="Street Address.." type="number">
+            <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date" max="2013-03-31">
+            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="tel">
+            <input class="form-control" id="house" name="house" placeholder="Street Address.." type="number" min="1">
             <input class="form-control" id="street_name" name="street_name" placeholder="Street.." type="text">
             <input class="form-control" id="town" name="town" placeholder="Town.." type="text">
-            <input class="form-control" id="state" name="state" placeholder="State.." type="state">
+            <input class="form-control" id="pcp_id" name="pcp_id" placeholder="Physician's ID.." type="number" min="1">
           </div>
         </div>
         <div class="form-group">
@@ -46,6 +46,22 @@ if ($mysqli->connect_error) {
           </div>
         </div>
    	</form>
+    <form action="Adverse.php" method="post" id="Patient">
+      <div class="ptInfo">
+          <label class="col-sm-3 control-label">Adverse Effects:</label>
+          <div class="col-sm-3">
+            <input class="form-control" id="severity" name="severity" placeholder="Severity.." type="text">
+            <input class="form-control" id="description" name="description" placeholder="Description.." type="text">
+            <input class="form-control" id="med_id" name="med_id" placeholder="Medication ID.." type="number">
+            <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID#.." type="number">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2 col-sm-offset-8">
+           <button type="submit" class="btn btn-success btn-block">Submit</button>
+          </div>
+        </div>
+    </form>
 	<form action="physician.php" method="post" id="Physician">
     <div class="mdInfo">
       <label class="col-sm-3 control-label">Physician Information:</label>
