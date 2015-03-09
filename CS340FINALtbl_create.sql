@@ -22,8 +22,6 @@ CREATE TABLE Adverse_Effect (
 	ae_id INT(11) NOT NULL AUTO_INCREMENT,
 	severity varchar(255) NOT NULL, 
 	description varchar(255) NOT NULL, 
-	med_id INT(11) NOT NULL, 
-	pt_id INT(11) NOT NULL, 
 	PRIMARY KEY(ae_id) )ENGINE=InnoDB;
 
 
@@ -39,12 +37,9 @@ CREATE TABLE Patient (
 	fname varchar(255) NOT NULL,
 	lname varchar(255) NOT NULL, 
 	phone INT(11) NOT NULL,
-	pcp_id INT(11) NOT NULL,
-	med_id INT(11) NOT NULL, 
 	house INT(11) NOT NULL, 
 	street_name varchar(255) NOT NULL, 
 	town varchar(255) NOT NULL, 
-	ae_id INT(11) NOT NULL, 
 	PRIMARY KEY(patient_id) )ENGINE=InnoDB;
 
 
@@ -58,11 +53,9 @@ CREATE TABLE Patient (
 
 CREATE TABLE Medication ( 
 	med_id INT(11) NOT NULL AUTO_INCREMENT, 
+	name varchar(255) NOT NULL,
 	quantity INT(11) NOT NULL, 
 	formulation varchar(255) NOT NULL, 
-	pt_id INT(11) NOT NULL, 
-	ae_id INT(11) NOT NULL, 
-	md_id INT(11) NOT NULL, 
 	PRIMARY KEY(med_id) )ENGINE=InnoDB;
 
 
@@ -79,11 +72,54 @@ CREATE TABLE Physician (
     physician_id INT(11) NOT NULL AUTO_INCREMENT,
     npi INT(11) NOT NULL,
     license INT(11) NOT NULL,
-    pt_id INT(11) NOT NULL,
-    med_id INT(11) NOT NULL,
     PRIMARY KEY(physician_id)
     )ENGINE=InnoDB;
 
+
+CREATE TABLE pt_meds(
+ 	pt_id int(11) NOT NULL,
+ 	med_id int(11) NOT NULL,
+ 	FOREIGN KEY(pt_id) REFERENCES Patient(patient_id),
+ 	FOREIGN KEY(med_id) REFERENCES Medication(med_id),
+ 	PRIMARY KEY(pt_id, med_id)
+ )ENGINE=InnoDB;
+
+CREATE TABLE pt_md(
+ 	pt_id int(11) NOT NULL,
+ 	md_id int(11) NOT NULL,
+ 	FOREIGN KEY(pt_id) REFERENCES Patient(patient_id),
+ 	FOREIGN KEY(md_id) REFERENCES Physician(physician_id),
+ 	PRIMARY KEY(pt_id, md_id)
+ )ENGINE=InnoDB;
+
+CREATE TABLE med_effect(
+ 	med_id int(11) NOT NULL,
+ 	effect_id int(11) NOT NULL,
+ 	FOREIGN KEY(med_id) REFERENCES Medication(med_id),
+ 	FOREIGN KEY(effect_id) REFERENCES Adverse_Effect(ae_id),
+ 	PRIMARY KEY(med_id, effect_id)
+ )ENGINE=InnoDB;
+
+CREATE TABLE md_meds(
+ 	md_id int(11) NOT NULL,
+ 	med_id int(11) NOT NULL,
+ 	FOREIGN KEY(md_id) REFERENCES Physician(physician_id),
+ 	FOREIGN KEY(med_id) REFERENCES Medication(med_id),
+ 	PRIMARY KEY(md_id, med_id)
+ )ENGINE=InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+--HOLDING 
 
 -- Site I referenced: http://stackoverflow.com/questions/564755/sql-server-text-type-vs-varchar-data-type
 
