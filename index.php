@@ -38,8 +38,17 @@ if ($mysqli->connect_error) {
             <input class="form-control" id="street_name" name="street_name" placeholder="Street.." type="text">
             <input class="form-control" id="town" name="town" placeholder="Town.." type="text">
             <input class="form-control" id="pcp_id" name="pcp_id" placeholder="Physician's ID.." type="number" min="1">
-          </div>
-        </div>
+		    <!-- CHANGE ONCE MEDS ARE ADDED TO TABLE!!
+			<select name="meds">
+		      <?php 
+				/*$sql = "SELECT fname FROM Patient";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['fname'] . "</option>";
+				}*/
+			  ?>
+			</select> -->
+		  </div>
         <div class="form-group">
           <div class="col-sm-2 col-sm-offset-8">
            <button type="submit" class="btn btn-success btn-block">Submit</button>
