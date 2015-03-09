@@ -46,7 +46,7 @@ if ($mysqli->connect_error) {
           </div>
         </div>
    	</form>
-    <form action="Adverse.php" method="post" id="Patient">
+    <form action="Adverse.php" method="post" id="Adverse">
       <div class="ptInfo">
           <label class="col-sm-3 control-label">Adverse Effects:</label>
           <div class="col-sm-3">
@@ -78,6 +78,23 @@ if ($mysqli->connect_error) {
       </div>
     </div>
     </form>
-   	</div>
+	<br>
+	<br>
+	<br>
+	<form action="displayPT.php"/>
+	  <div class="col-md-4 text-center">
+		<div class="pull-left">
+		  <button type="submit" class="btn btn-success btn-block">Show Patients</button>
+		</div>
+	  </div>
+	</form>	
+	<form action="displayAE.php"/>
+	  <div class="col-md-4 text-center">
+		<div class="pull-left">
+		  <button type="submit" class="btn btn-success btn-block">Show Adverse Effects</button>
+		</div>
+	  </div>
+	</form>
+</div>
   </body>
 </html>
