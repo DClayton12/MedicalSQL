@@ -17,11 +17,11 @@ $pcp_id= $_POST['pcp_id'];
 
 if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($house) && !empty($street_name) && !empty($town) && !empty($pcp_id)){
 	//Only if user inputs all specified data. 
-	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town, pcp_id) VALUES (?,?,?,?,?,?,?,?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town) VALUES (?,?,?,?,?,?,?)"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("dssddssd",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town'],$_POST['pcp_id']))){
+	if(!($stmt->bind_param("dssddss",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 			}
