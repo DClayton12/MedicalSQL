@@ -6,7 +6,7 @@ if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
 //  get PATIENT variables from POST request
-$dob= $_POST['datepicker'];
+$dob= $_POST['dob'];
 $fname= $_POST['fname'];
 $lname= $_POST['lname'];
 $phone= $_POST['phone'];
@@ -20,7 +20,7 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("dssddss",$_POST['datepicker'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town']))){
+	if(!($stmt->bind_param("dssddss",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 			}
@@ -38,10 +38,7 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
-	if(!$stmt->execute()){
-	// Execute query
-	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
-	}
+	
 
 	$stmt->close(); // Redirect back to main page now that insert query is done
 	$path = explode('/', $_SERVER['PHP_SELF'], - 1);

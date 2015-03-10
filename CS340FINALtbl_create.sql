@@ -33,7 +33,7 @@ CREATE TABLE Adverse_Effect (
 
 CREATE TABLE Patient ( 
 	patient_id INT(11) NOT NULL AUTO_INCREMENT,
-	dob date(11) NOT NULL, 
+	dob date NOT NULL, 
 	fname varchar(255) NOT NULL,
 	lname varchar(255) NOT NULL, 
 	phone INT(11) NOT NULL,
