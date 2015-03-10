@@ -20,6 +20,15 @@ if ($mysqli->connect_error) {
     		margin-top: 80px;
     	}
     </style>
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
   </head>
   <body>
     <br>
@@ -32,8 +41,8 @@ if ($mysqli->connect_error) {
           <div class="col-sm-3">
             <input class="form-control" id="fname" name="fname" placeholder="First name.." type="text">
             <input class="form-control" id="lname" name="lname" placeholder="Last name.." type="text">
-            <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date" max="2013-03-31">
-            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="tel">
+            <input class="form-control" id="datepicker" name="datepicker"> 
+            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="number" min="1111111">
             <input class="form-control" id="house" name="house" placeholder="Street Address.." type="number" min="1">
             <input class="form-control" id="street_name" name="street_name" placeholder="Street.." type="text">
             <input class="form-control" id="town" name="town" placeholder="Town.." type="text">
