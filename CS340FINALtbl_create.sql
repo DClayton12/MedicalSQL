@@ -33,7 +33,7 @@ CREATE TABLE Adverse_Effect (
 
 CREATE TABLE Patient ( 
 	patient_id INT(11) NOT NULL AUTO_INCREMENT,
-	dob INT(11) NOT NULL, 
+	dob date NOT NULL, 
 	fname varchar(255) NOT NULL,
 	lname varchar(255) NOT NULL, 
 	phone INT(11) NOT NULL,
@@ -68,8 +68,9 @@ CREATE TABLE Medication (
 -- notes - a text type
 -- The primary key is a combination of did and osid
 
-CREATE TABLE Physician (
+CREATE TABLE Physician(
     physician_id INT(11) NOT NULL AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
     npi INT(11) NOT NULL,
     license INT(11) NOT NULL,
     PRIMARY KEY(physician_id)

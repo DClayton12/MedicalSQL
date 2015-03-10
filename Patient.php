@@ -40,10 +40,7 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
-	if(!$stmt->execute()){
-	// Execute query
-	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
-	}
+	
 
 	$stmt->close(); // Redirect back to main page now that insert query is done
 	$path = explode('/', $_SERVER['PHP_SELF'], - 1);
