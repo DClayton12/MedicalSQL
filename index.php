@@ -71,11 +71,10 @@ if ($mysqli->connect_error) {
           </div>
         </div>
     </form>
-	<form action="physician.php" method="post" id="Physician">
+	<form action="Physician.php" method="post" id="Physician">
     <div class="mdInfo">
       <label class="col-sm-3 control-label">Physician Information:</label>
       <div class="col-sm-3">
-        <input class="form-control" id="physician_id" name="physician_id" placeholder="ID No." type="text">
         <input class="form-control" id="npi" name="npi" placeholder="NPI No." type="text">
         <input class="form-control" id="license" name="license" placeholder="License No." type="number">
         <input class="form-control" id="pt_id" name="pt_id" placeholder="Pt ID No." type="number">
@@ -93,14 +92,21 @@ if ($mysqli->connect_error) {
 	<form action="displayPT.php"/>
 	  <div class="col-md-4 text-center">
 		<div class="pull-left">
-		  <button type="submit" class="btn btn-success btn-block">Show Patients</button>
+		  <button type="submit" class="btn btn-danger btn-block">Show Patients</button>
 		</div>
 	  </div>
 	</form>	
 	<form action="displayAE.php"/>
 	  <div class="col-md-4 text-center">
 		<div class="pull-left">
-		  <button type="submit" class="btn btn-success btn-block">Show Adverse Effects</button>
+		  <button type="submit" class="btn btn-danger btn-block">Show Adverse Effects</button>
+		</div>
+	  </div>
+	</form>
+	<form action="displayMD.php"/>
+	  <div class="col-md-4 text-center">
+		<div class="pull-left">
+		  <button type="submit" class="btn btn-danger btn-block">Show Physicians</button>
 		</div>
 	  </div>
 	</form>
