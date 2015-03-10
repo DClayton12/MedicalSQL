@@ -64,7 +64,7 @@ if ($mysqli->connect_error) {
             <input class="form-control" id="med_id" name="med_id" placeholder="Medication ID.." type="number">
             <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID#.." type="number">
           </div>
-        </div>
+      </div>
         <div class="form-group">
           <div class="col-sm-2 col-sm-offset-8">
            <button type="submit" class="btn btn-success btn-block">Submit</button>
@@ -72,23 +72,21 @@ if ($mysqli->connect_error) {
         </div>
     </form>
 	<form action="Physician.php" method="post" id="Physician">
-    <div class="mdInfo">
-      <label class="col-sm-3 control-label">Physician Information:</label>
-      <div class="col-sm-3">
-        <input class="form-control" id="npi" name="npi" placeholder="NPI No." type="text">
-        <input class="form-control" id="license" name="license" placeholder="License No." type="number">
-        <input class="form-control" id="pt_id" name="pt_id" placeholder="Pt ID No." type="number">
+      <div class="mdInfo">
+        <label class="col-sm-3 control-label">Physician Information:</label>
+        <div class="col-sm-3">
+	      <input class="form-control" id="name" name="name" placeholder="Name" type="text">
+          <input class="form-control" id="npi" name="npi" placeholder="NPI No." type="number">
+          <input class="form-control" id="license" name="license" placeholder="License No." type="number">
+          <input class="form-control" id="pt_id" name="pt_id" placeholder="Pt ID No." type="number">
+	    </div>
 	  </div>
-	</div>
 	<div class="form-group">
       <div class="col-sm-2 col-sm-offset-8">
        <button type="submit" class="btn btn-success btn-block">Submit</button>
       </div>
     </div>
     </form>
-	<br>
-	<br>
-	<br>
 	<form action="displayPT.php"/>
 	  <div class="col-md-4 text-center">
 		<div class="pull-left">

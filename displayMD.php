@@ -9,13 +9,13 @@
       <?php
       include "index.php";
 
-      $sql = "SELECT npi, license FROM Physician";
+      $sql = "SELECT npi, license, name FROM Physician";
       $result = $mysqli->query($sql);
 
       if($result->num_rows > 0) {
-      	echo "<table border='1'><tr><th>NPI</th><th></th><th></th><th>License</th></tr>";
+      	echo "<table border='1'><tr><th>Name</th><th></th><th></th><th>NPI</th><th></th><th></th><th>License</th></tr>";
       	while($row = $result->fetch_assoc()) {
-      		echo "<tr><td>".$row["npi"]."</td><td></td><td></td><td>".$row["license"]."</td>/tr>";
+      		echo "<tr><td>".$row["name"]."</td><td></td><td></td><td>".$row["npi"]."</td><td></td><td></td><td>".$row["license"]."</td></tr>";
       	}
       	echo "</table>";
 		echo " <div><a href='index.php'>Click here to return to the main page.</a></div>";

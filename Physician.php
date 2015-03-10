@@ -5,18 +5,20 @@ $mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkz
 if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
-//  get PATIENT variables from POST request
-$dob= $_POST['npi'];
-$fname= $_POST['license'];
-$lname= $_POST['pt_id'];
+//  get PHYSICIAN variables from POST request
+$npi = $_POST['npi'];
+$license = $_POST['license'];
+$pt_id = $_POST['pt_id'];
+$name = $_POST['name'];
 
-if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($house) && !empty($street_name) && !empty($town) && !empty($pcp_id)){
+
+if(!empty($npi) && !empty($license) && !empty($pt_id) && !empty($name)){
 	//Only if user inputs all specified data. 
-	if(!($stmt = $mysqli->prepare("INSERT INTO Physician(npi, license, pt_id) VALUES (?,?,?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO Physician(npi, license, name) VALUES (?,?,?)"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("ddd",$_POST['npi'],$_POST['license'],$_POST['pt_id']))){
+	if(!($stmt->bind_param("dds",$_POST['npi'],$_POST['license'],$_POST['name']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 			}
@@ -30,31 +32,20 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 	$redirect = "http://" . $_SERVER['HTTP_HOST'] . $path;
 	header("Location: {$redirect}/index.php");
 
-	if(empty($dob)) { // One or more inputs are empty. These may not be NULL.
-		echo 'Birthdate is a required field. ';
+	if(empty($npi)) { // One or more inputs are empty. These may not be NULL.
+		echo 'NPI is a required field. ';
 	}
-	if(empty($fname)) {
-		echo 'First name is a required field. ';
+	if(empty($license)) {
+		echo 'License # is a required field. ';
 	}
-	if(empty($lname)) {
-		echo 'Last name is a required field. ';
+	if(empty($pt_id)) {
+		echo 'Patient ID is a required field. ';
 	}
-	if(empty($phone)) {
-		echo 'Phone is a required field. ';
+	if(empty($name)) {
+		echo 'Name is a required field. ';
 	}
-	if(empty($house)) {
-		echo 'House number is a required field. ';
-	}
-	if(empty($street_name)) {
-		echo 'Street name is a required field. ';
-	}
-	if(empty($town)) {
-		echo 'Town is a required field. ';
-	}
-	if(empty($pcp_id)) {
-		echo 'Physician ID# is a required field. ';
-	}
-	}
+}
+	
 ?>
 
 <!DOCTYPE html> 
@@ -65,5 +56,6 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
   <body>
   <p>
   <a href="index.php">Click here to return to the main page.</a>
+  </p>
   </body>
 </html>
