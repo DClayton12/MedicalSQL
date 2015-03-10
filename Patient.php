@@ -14,6 +14,8 @@ $house= $_POST['house'];
 $street_name= $_POST['street_name'];
 $town= $_POST['town'];
 $pcp_id= $_POST['pcp_id'];
+
+
 if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($house) && !empty($street_name) && !empty($town) && !empty($pcp_id)){
 	//Only if user inputs all specified data. 
 	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town) VALUES (?,?,?,?,?,?,?)"))){
@@ -29,7 +31,7 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
-	if(!($stmt = $mysqli->prepare("INSERT INTO Physician(physician_id) VALUES (?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO pt_md(md_id) VALUES (?)"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
