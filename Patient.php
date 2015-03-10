@@ -14,14 +14,13 @@ $house= $_POST['house'];
 $street_name= $_POST['street_name'];
 $town= $_POST['town'];
 $pcp_id= $_POST['pcp_id'];
-
 if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty($house) && !empty($street_name) && !empty($town) && !empty($pcp_id)){
 	//Only if user inputs all specified data. 
-	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town, pcp_id) VALUES (?,?,?,?,?,?,?,?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO Patient(dob, fname, lname, phone, house, street_name, town) VALUES (?,?,?,?,?,?,?)"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("dssddssd",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town'],$_POST['pcp_id']))){
+	if(!($stmt->bind_param("dssddss",$_POST['dob'],$_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['house'],$_POST['street_name'],$_POST['town']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 			}
@@ -29,12 +28,26 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($phone) && !empty(
 	// Execute query
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
 	}
+
+	if(!($stmt = $mysqli->prepare("INSERT INTO Physician(physician_id) VALUES (?)"))){
+		//Prepare INSERT query
+				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+	}
+	if(!($stmt->bind_param("d",$_POST['pcp_id']))){
+			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
+			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+	}
+
+	if(!$stmt->execute()){
+	// Execute query
+	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+	}
+
 	$stmt->close(); // Redirect back to main page now that insert query is done
 	$path = explode('/', $_SERVER['PHP_SELF'], - 1);
 	$path = implode('/', $path);
 	$redirect = "http://" . $_SERVER['HTTP_HOST'] . $path;
 	header("Location: {$redirect}/index.php");
-
 	if(empty($dob)) { // One or more inputs are empty. These may not be NULL.
 		echo 'Birthdate is a required field. ';
 	}
