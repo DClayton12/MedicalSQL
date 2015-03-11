@@ -25,6 +25,16 @@ if(!empty($severity) && !empty($description) && !empty($med_id) && !empty($pt_id
 	// Execute query
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
 	}
+	
+	if(!($stmt = $mysqli->prepare("INSERT INTO med_effect(med_id) VALUES (?)"))){
+		//Prepare INSERT query
+				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+	}
+	if(!($stmt->bind_param("d",$_POST['med_id']))){
+			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
+			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+	}
+
 	$stmt->close(); // Redirect back to main page now that insert query is done
 	$path = explode('/', $_SERVER['PHP_SELF'], - 1);
 	$path = implode('/', $path);

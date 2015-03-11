@@ -106,6 +106,62 @@ if ($mysqli->connect_error) {
       </div>
     </div>
     </form>
+	<form action="delete.php" method="post" id="delete">
+      <div class="delete">
+        <label class="col-sm-3 control-label">Delete Data:</label>
+        <div class="col-sm-3">
+	      <input class="form-control" id="ptID" name="ptID" placeholder="Patient ID" type="number">
+		  <select class="form-control" name="pt">
+		    <option selected='true' style='display:none;'>Patient Reference. Input value above!</option>
+		      <?php 
+				$sql = "SELECT patient_id, fname, lname FROM Patient";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['patient_id']." ".$row['fname']." ".$row['lname']. "</option>";
+				}
+			  ?>
+		  </select> 
+          <input class="form-control" id="mdID" name="mdID" placeholder="Physician ID" type="number">
+		  <select class="form-control" name="md">
+		    <option selected='true' style='display:none;'>Physician Reference. Input value above!</option>
+		      <?php 
+				$sql = "SELECT physician_id, name FROM Physician";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['physician_id']. " ".$row['name']. "</option>";
+				}
+			  ?>
+		  </select> 
+          <input class="form-control" id="medID" name="medID" placeholder="Medication ID" type="number">
+		  <select class="form-control" name="med">
+		    <option selected='true' style='display:none;'>Medication Reference. Input value above!</option>
+		      <?php 
+				$sql = "SELECT med_id, name FROM Adverse_Effect";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['med_id']. " ".$row['name']. "</option>";
+				}
+			  ?>
+		  </select> 
+          <input class="form-control" id="aeID" name="aeID" placeholder="Adverse Effect ID" type="number">
+		  <select class="form-control" name="ae">
+		    <option selected='true' style='display:none;'>Adverse Effect Reference. Input value above!</option>
+		      <?php 
+				$sql = "SELECT ae_id, description FROM Adverse_Effect";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['ae_id']. " ".$row['description']. "</option>";
+				}
+			  ?>
+		  </select> 
+	    </div>
+	  </div>
+	<div class="form-group">
+      <div class="col-sm-2 col-sm-offset-8">
+       <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </div>
+    </div>
+    </form>
 	<form action="displayPT.php"/>
 	  <div class="col-md-4 text-center">
 		<div class="pull-left">
