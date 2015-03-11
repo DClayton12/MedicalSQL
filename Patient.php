@@ -55,9 +55,6 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($house) && !empty(
 	if(empty($lname)) {
 		echo 'Last name is a required field. ';
 	}
-	if(empty($phone)) {
-		echo 'Phone is a required field. ';
-	}
 	if(empty($house)) {
 		echo 'House number is a required field. ';
 	}
