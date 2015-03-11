@@ -32,8 +32,8 @@ if ($mysqli->connect_error) {
           <div class="col-sm-3">
             <input class="form-control" id="fname" name="fname" placeholder="First name.." type="text">
             <input class="form-control" id="lname" name="lname" placeholder="Last name.." type="text">
-            <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date" value="<?php echo date('Y-m-d');?>" />
-            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="number" min="1111111">
+            <input class="form-control" id="dob" name="dob" placeholder="Birthdate.." type="date">
+            <input class="form-control" id="phone" name="phone" placeholder="Phone.." type="number" min="1111111111">
             <input class="form-control" id="house" name="house" placeholder="Street Address.." type="number" min="1">
             <input class="form-control" id="street_name" name="street_name" placeholder="Street.." type="text">
             <input class="form-control" id="town" name="town" placeholder="Town.." type="text">
