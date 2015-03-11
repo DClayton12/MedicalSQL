@@ -36,7 +36,6 @@ CREATE TABLE Patient (
 	dob date NOT NULL, 
 	fname varchar(255) NOT NULL,
 	lname varchar(255) NOT NULL, 
-	phone INT(11) NOT NULL,
 	house INT(11) NOT NULL, 
 	street_name varchar(255) NOT NULL, 
 	town varchar(255) NOT NULL, 
