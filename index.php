@@ -37,7 +37,8 @@ if ($mysqli->connect_error) {
             <input class="form-control" id="street_name" name="street_name" placeholder="Street.." type="text">
             <input class="form-control" id="town" name="town" placeholder="Town.." type="text">
             <input class="form-control" id="pcp_id" name="pcp_id" placeholder="Physician ID.." type="number" min="1">
-			<select name="docs">
+			<select class="form-control" name="docs">
+			  <option selected='true' style='display:none;'>MD Reference. Input value above!</option>
 		      <?php 
 				$sql = "SELECT physician_id, name FROM Physician";
 				$result = $mysqli->query($sql);
@@ -61,7 +62,8 @@ if ($mysqli->connect_error) {
             <input class="form-control" id="description" name="description" placeholder="Description.." type="text">
             <input class="form-control" id="med_id" name="med_id" placeholder="Medication ID.." type="number">
             <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID.." type="number">
-			<select name="pts">
+			<select class="form-control" name="pts">
+			  <option selected='true' style='display:none;'>Patient Reference. Input value above!</option>
 		      <?php 
 				$sql = "SELECT patient_id, fname, lname FROM Patient";
 				$result = $mysqli->query($sql);
@@ -86,7 +88,8 @@ if ($mysqli->connect_error) {
           <input class="form-control" id="npi" name="npi" placeholder="NPI No." type="number">
           <input class="form-control" id="license" name="license" placeholder="License No." type="number">
           <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID" type="number">
-		  <select name="pts">
+		  <select class="form-control" name="pts">
+		    <option selected='true' style='display:none;'>Patient Reference. Input value above!</option>
 		      <?php 
 				$sql = "SELECT patient_id, fname, lname FROM Patient";
 				$result = $mysqli->query($sql);
