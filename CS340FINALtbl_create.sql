@@ -109,8 +109,17 @@ INSERT INTO Patient
 VALUES([dob], [fname], [lname], [house], [street_name], [town]);
 
 DELETE FROM Patient 
-WHERE patient_id = ?
+WHERE patient_id = [patient id no.];
 
+DELETE FROM Physician 
+WHERE physician_id = [physician id no.];
 
+DELETE FROM Medication 
+WHERE med_id = [medication id no.];
 
+DELETE FROM Adverse_Effect 
+WHERE ae_id = [adverse id no.];
 
+UPDATE  Patient
+SET patient_id =  [new patient id no.] 
+WHERE  patient_id = [old patient id no.];
