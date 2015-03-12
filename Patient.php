@@ -30,11 +30,11 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($house) && !empty(
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
-	if(!($stmt = $mysqli->prepare("INSERT INTO pt_md(md_id) VALUES (?)"))){
+	if(!($stmt = $mysqli->prepare("INSERT INTO pt_md(pt_id,md_id) VALUES ((SELECT patient_id FROM Patient WHERE fname=($fname) AND lname=($lname) AND dob=($dob), ? )"))){
 		//Prepare INSERT query
 				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-	if(!($stmt->bind_param("d",$_POST['pcp_id']))){
+	if(!($stmt->bind_param("dd",WHAT GOES HERE TO INSERT PATIENT ID FROM SUBQUERY,$_POST['pcp_id']))){
 			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
 			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 	}
