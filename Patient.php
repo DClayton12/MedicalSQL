@@ -1,7 +1,7 @@
 <?php
 //Darnel Clayton , Robert Brancale
 ini_set('display_errors', 'On'); //Error reporting
-$mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkzK','claytond-db'); //connect to DB
+$mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkzK','clayton-db'); //connect to DB
 if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
@@ -29,17 +29,6 @@ if(!empty($dob) && !empty($fname) && !empty($lname) && !empty($house) && !empty(
 	// Execute query
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
 	}
-
-	if(!($stmt = $mysqli->prepare("INSERT INTO pt_md(md_id) VALUES (?)"))){
-		//Prepare INSERT query
-				echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
-	}
-	if(!($stmt->bind_param("d",$_POST['pcp_id']))){
-			//Referenced: http://php.net/manual/en/mysqli-stmt.bind-param.php	
-			echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
-	}
-
-	
 
 	$stmt->close(); // Redirect back to main page now that insert query is done
 	$path = explode('/', $_SERVER['PHP_SELF'], - 1);

@@ -54,32 +54,6 @@ if ($mysqli->connect_error) {
           </div>
         </div>
    	</form>
-    <form action="Adverse.php" method="post" id="Adverse">
-      <div class="ptInfo">
-          <label class="col-sm-3 control-label">Adverse Effects:</label>
-          <div class="col-sm-3">
-            <input class="form-control" id="severity" name="severity" placeholder="Severity.." type="text">
-            <input class="form-control" id="description" name="description" placeholder="Description.." type="text">
-            <input class="form-control" id="med_id" name="med_id" placeholder="Medication ID.." type="number">
-            <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID.." type="number">
-			<select class="form-control" name="pts">
-			  <option selected='true' style='display:none;'>Patient Reference. Input value above!</option>
-		      <?php 
-				$sql = "SELECT patient_id, fname, lname FROM Patient";
-				$result = $mysqli->query($sql);
-				while ($row = mysqli_fetch_array($result)){
-					echo "<option value=\"owner1\">" . $row['patient_id']. " ".$row['fname']. " ".$row['lname']."</option>";
-				}
-			  ?>
-			</select> 
-          </div>
-      </div>
-        <div class="form-group">
-          <div class="col-sm-2 col-sm-offset-8">
-           <button type="submit" class="btn btn-success btn-block">Submit</button>
-          </div>
-        </div>
-    </form>
 	<form action="Physician.php" method="post" id="Physician">
       <div class="mdInfo">
         <label class="col-sm-3 control-label">Physician Information:</label>
@@ -105,6 +79,47 @@ if ($mysqli->connect_error) {
        <button type="submit" class="btn btn-success btn-block">Submit</button>
       </div>
     </div>
+    </form>
+    <form action="Medication.php" method="post" id="Meds">
+      <div class="meds">
+          <label class="col-sm-3 control-label">Medications:</label>
+          <div class="col-sm-3">
+            <input class="form-control" id="name" name="name" placeholder="Name.." type="text">
+            <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number">
+            <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number">
+          </div>
+      </div>
+        <div class="form-group">
+          <div class="col-sm-2 col-sm-offset-8">
+           <button type="submit" class="btn btn-success btn-block">Submit</button>
+          </div>
+        </div>
+    </form>
+	 <form action="Adverse.php" method="post" id="Adverse">
+      <div class="ptInfo">
+          <label class="col-sm-3 control-label">Adverse Effects:</label>
+          <div class="col-sm-3">
+            <input class="form-control" id="severity" name="severity" placeholder="Severity.." type="text">
+            <input class="form-control" id="description" name="description" placeholder="Description.." type="text">
+            <input class="form-control" id="med_id" name="med_id" placeholder="Medication ID.." type="number">
+            <input class="form-control" id="pt_id" name="pt_id" placeholder="Patient ID.." type="number">
+			<select class="form-control" name="pts">
+			  <option selected='true' style='display:none;'>Patient Reference. Input value above!</option>
+		      <?php 
+				$sql = "SELECT patient_id, fname, lname FROM Patient";
+				$result = $mysqli->query($sql);
+				while ($row = mysqli_fetch_array($result)){
+					echo "<option value=\"owner1\">" . $row['patient_id']. " ".$row['fname']. " ".$row['lname']."</option>";
+				}
+			  ?>
+			</select> 
+          </div>
+      </div>
+        <div class="form-group">
+          <div class="col-sm-2 col-sm-offset-8">
+           <button type="submit" class="btn btn-success btn-block">Submit</button>
+          </div>
+        </div>
     </form>
 	<form action="delete.php" method="post" id="delete">
       <div class="delete">

@@ -17,11 +17,7 @@
               <th>Street</th><th></th><th></th><th>Town</th></tr>";
       	while($row = $result->fetch_assoc()) {
       		echo "<tr><td>".$row["patient_id"]."</td><td></td><td></td><td>".$row["lname"]."</td><td></td><td></td><td>".$row["fname"]."</td><td></td><td></td><td>".$row["dob"]."</td><td></td><td></td><td>"
-<<<<<<< HEAD
-               .$row["house"]."</td><td></td><td></td><td>".$row["street_name"]."</td><td></td><td></td><td>".$row["town"]."</td></tr>";
-=======
-               .$row["house"]."</td><td></td><td></td><td>".$row["street_name"]."</td><td></td><td></td><td>".$row["town"]."</td><td></td><td></td><td>";
->>>>>>> 6d152e95cd00b5ccb7e5e3c51915667ff802125a
+                 .$row["house"]."</td><td></td><td></td><td>".$row["street_name"]."</td><td></td><td></td><td>".$row["town"]."</td></tr>";
       	}
       	echo "</table>";
 		echo " <div><a href='index.php'>Click here to return to the main page.</a></div>";
