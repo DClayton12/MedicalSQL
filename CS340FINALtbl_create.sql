@@ -108,6 +108,9 @@ VALUES([name], [strength], [quantity]);
 INSERT INTO Patient
 VALUES([dob], [fname], [lname], [house], [street_name], [town]);
 
+DELETE FROM Patient 
+WHERE patient_id = ?
+
 
 
 

@@ -85,8 +85,17 @@ if ($mysqli->connect_error) {
           <label class="col-sm-3 control-label">Medications:</label>
           <div class="col-sm-3">
             <input class="form-control" id="name" name="name" placeholder="Name.." type="text">
+<<<<<<< HEAD
             <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number" min="1" max="1000">
+=======
+<<<<<<< HEAD
+            <input class="form-control" id="strength" name="strength" placeholder="Strength (No units).." type="number">
+            <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number">
+=======
+            <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number" min="1" max="10">
+>>>>>>> b67b000aa3d46c50db4424852e0459b36359d44d
             <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number" min="1" max="100">
+>>>>>>> 694c7be53960441f18df17cdb2f6fe369565478d
           </div>
       </div>
         <div class="form-group">
@@ -193,8 +202,15 @@ if ($mysqli->connect_error) {
 	</form>
 	<form action="displayMD.php"/>
 	  <div class="col-md-4 text-center">
-		<div class="pull-left">
+		<div class="pull-right">
 		  <button type="submit" class="btn btn-danger btn-block">Show Physicians</button>
+		</div>
+	  </div>
+	</form>
+	<form action="displayMed.php"/>
+	  <div class="col-sm-8 center-block text-center">
+		<div class="pull-right">
+		  <button type="submit" class="btn btn-danger btn-block">Show Medications</button>
 		</div>
 	  </div>
 	</form>
