@@ -41,7 +41,7 @@ CREATE TABLE Medication (
 	med_id INT(11) NOT NULL AUTO_INCREMENT, 
 	name varchar(255) NOT NULL,
 	quantity INT(11) NOT NULL, 
-	formulation varchar(255) NOT NULL, 
+	strength INT(11) NOT NULL,
 	PRIMARY KEY(med_id) )ENGINE=InnoDB;
 
 CREATE TABLE Physician(
