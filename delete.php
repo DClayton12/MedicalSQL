@@ -2,7 +2,7 @@
 //Darnel Clayton , Robert Brancale
 ini_set('display_errors', 'On'); //Error reporting
 
-$mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkzK','claytond-db'); //connect to DB
+$mysqli = new mysqli('oniddb.cws.oregonstate.edu','brancalr-db','ZVjjOmAKKIdkFf9u','brancalr-db'); //connect to DB
 if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }

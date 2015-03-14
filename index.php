@@ -1,7 +1,7 @@
 <?php
 //Darnel Clayton , Robert Brancale
 ini_set('display_errors', 'On'); //Error reporting
-$mysqli = new mysqli('oniddb.cws.oregonstate.edu','claytond-db','0scRzn1A9MkIFkzK','claytond-db'); //connect to DB
+$mysqli = new mysqli('oniddb.cws.oregonstate.edu','brancalr-db','ZVjjOmAKKIdkFf9u','brancalr-db'); //connect to DB
 if ($mysqli->connect_error) {
     die('Cannot connect to SQL Database. (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
@@ -48,6 +48,7 @@ if ($mysqli->connect_error) {
 			  ?>
 			</select> 
 		  </div>
+		  </div>
         <div class="form-group">
           <div class="col-sm-2 col-sm-offset-8">
            <button type="submit" class="btn btn-success btn-block">Submit</button>
@@ -85,13 +86,8 @@ if ($mysqli->connect_error) {
           <label class="col-sm-3 control-label">Medications:</label>
           <div class="col-sm-3">
             <input class="form-control" id="name" name="name" placeholder="Name.." type="text">
-<<<<<<< HEAD
-            <input class="form-control" id="strength" name="strength" placeholder="Strength (No units).." type="number">
-            <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number">
-=======
-            <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number" min="1" max="10">
+            <input class="form-control" id="strength" name="strength" placeholder="Strength (No units).." type="number" min="0" max="1000">
             <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number" min="1" max="100">
->>>>>>> 694c7be53960441f18df17cdb2f6fe369565478d
           </div>
       </div>
         <div class="form-group">
@@ -156,7 +152,7 @@ if ($mysqli->connect_error) {
 		  <select class="form-control" name="med">
 		    <option selected='true' style='display:none;'>Medication Reference. Input value above!</option>
 		      <?php 
-				$sql = "SELECT med_id, name FROM Adverse_Effect";
+				$sql = "SELECT med_id, name FROM Medication";
 				$result = $mysqli->query($sql);
 				while ($row = mysqli_fetch_array($result)){
 					echo "<option value=\"owner1\">" . $row['med_id']. " ".$row['name']. "</option>";
