@@ -10,7 +10,10 @@ DROP TABLE IF EXISTS `Adverse_Effect`;
 DROP TABLE IF EXISTS `Patient`;
 DROP TABLE IF EXISTS `Medication`;
 DROP TABLE IF EXISTS `Physician`;
-
+DROP TABLE IF EXISTS `pt_meds`;
+DROP TABLE IF EXISTS `pt_md`;
+DROP TABLE IF EXISTS `med_effect`;
+DROP TABLE IF EXISTS `md_meds`;
 
 -- Create a table called Adverse_Effect with the following properties:
 -- ae_id - an auto incrementing integer which is the primary key
@@ -24,13 +27,6 @@ CREATE TABLE Adverse_Effect (
 	description varchar(255) NOT NULL, 
 	PRIMARY KEY(ae_id) )ENGINE=InnoDB;
 
-
--- Create a table called operating_system with the following properties:
--- id - an auto incrementing integer which is the primary key
--- name - a varchar of maximum length 255, cannot be null
--- version - a varchar of maximum length 255, cannot be null
--- name version combinations must be unique
-
 CREATE TABLE Patient ( 
 	patient_id INT(11) NOT NULL AUTO_INCREMENT,
 	dob date NOT NULL, 
@@ -41,31 +37,12 @@ CREATE TABLE Patient (
 	town varchar(255) NOT NULL, 
 	PRIMARY KEY(patient_id) )ENGINE=InnoDB;
 
-
-
--- Create a table called device with the following properties:
--- id - an auto incrementing integer which is the primary key
--- cid - an integer which is a foreign key reference to the category_tbl table
--- name - a varchar of maximum length 255 which cannot be null
--- received - a date type (you can read about it here http://dev.mysql.com/doc/refman/5.0/en/datetime.html)
--- isbroken - a boolean
-
 CREATE TABLE Medication ( 
 	med_id INT(11) NOT NULL AUTO_INCREMENT, 
 	name varchar(255) NOT NULL,
 	quantity INT(11) NOT NULL, 
-	formulation varchar(255) NOT NULL, 
+	strength INT(11) NOT NULL,
 	PRIMARY KEY(med_id) )ENGINE=InnoDB;
-
-
--- Site I Referenced: http://www.sqlusa.com/bestpractices/bitdatatype/
-
--- Create a table called os_support with the following properties, this is a table representing a many-to-many relationship
--- between devices and operating systems:
--- did - an integer which is a foreign key reference to device
--- osid - an integer which is a foreign key reference to operating_system
--- notes - a text type
--- The primary key is a combination of did and osid
 
 CREATE TABLE Physician(
     physician_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -74,7 +51,6 @@ CREATE TABLE Physician(
     license INT(11) NOT NULL,
     PRIMARY KEY(physician_id)
     )ENGINE=InnoDB;
-
 
 CREATE TABLE pt_meds(
  	pt_id int(11) NOT NULL,
@@ -107,3 +83,43 @@ CREATE TABLE md_meds(
  	FOREIGN KEY(med_id) REFERENCES Medication(med_id),
  	PRIMARY KEY(md_id, med_id)
  )ENGINE=InnoDB;
+
+SELECT [patient_id], [fname], [lname], [dob], [house], [street_name], [town]
+FROM Patient;
+
+SELECT [physician_id], [name] 
+FROM Physician;
+
+SELECT [med_id], [name] 
+FROM Adverse_Effect;
+
+SELECT [ae_id], [description]
+FROM Adverse_Effect;
+
+INSERT INTO Adverse_Effect 
+VALUES([severity], [description]);
+
+INSERT INTO Physician
+VALUES([npi], [license], [name]);
+
+INSERT INTO Medication
+VALUES([name], [strength], [quantity]);
+
+INSERT INTO Patient
+VALUES([dob], [fname], [lname], [house], [street_name], [town]);
+
+DELETE FROM Patient 
+WHERE patient_id = [patient id no.];
+
+DELETE FROM Physician 
+WHERE physician_id = [physician id no.];
+
+DELETE FROM Medication 
+WHERE med_id = [medication id no.];
+
+DELETE FROM Adverse_Effect 
+WHERE ae_id = [adverse id no.];
+
+UPDATE  Patient
+SET patient_id =  [new patient id no.] 
+WHERE  patient_id = [old patient id no.];

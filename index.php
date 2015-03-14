@@ -86,7 +86,19 @@ if ($mysqli->connect_error) {
           <label class="col-sm-3 control-label">Medications:</label>
           <div class="col-sm-3">
             <input class="form-control" id="name" name="name" placeholder="Name.." type="text">
+<<<<<<< HEAD
             <input class="form-control" id="strength" name="strength" placeholder="Strength (No units).." type="number" min="0" max="1000">
+=======
+<<<<<<< HEAD
+            <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number" min="1" max="1000">
+=======
+<<<<<<< HEAD
+            <input class="form-control" id="strength" name="strength" placeholder="Strength (No units).." type="number">
+            <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number">
+=======
+            <input class="form-control" id="strength" name="strength" placeholder="Strength.." type="number" min="1" max="10">
+>>>>>>> b67b000aa3d46c50db4424852e0459b36359d44d
+>>>>>>> 3a82e9ca81375dfe4a7160ecb44522c9ef962729
             <input class="form-control" id="quantity" name="quantity" placeholder="Quantity.." type="number" min="1" max="100">
           </div>
       </div>
